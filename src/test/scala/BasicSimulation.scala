@@ -1,4 +1,6 @@
-﻿import io.gatling.core.Predef._
+﻿package simulations
+
+import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 class BasicSimulation extends Simulation {
@@ -8,7 +10,7 @@ class BasicSimulation extends Simulation {
 
   val scn = scenario("Basic Test")
     .exec(
-      http("GET request")
+      http("GET Request")
         .get("/get")
         .check(status.is(200))
     )
