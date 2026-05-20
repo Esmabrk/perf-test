@@ -1,0 +1,20 @@
+name: Performance Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  k6-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install K6
+        run: sudo apt update && sudo apt install -y k6
+
+      - name: Run K6 test
+        run: k6 run test.js
