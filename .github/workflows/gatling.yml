@@ -23,8 +23,8 @@ jobs:
       - name: Run Gatling tests
         run: mvn gatling:test
 
-      - name: Show reports
-        run: ls -R target/gatling
+      - name: Debug output
+        run: ls -R target
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
