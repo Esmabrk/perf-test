@@ -1,0 +1,28 @@
+name: Gatling Performance Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  gatling:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Run Gatling test
+        run: mvn gatling:test
+
+      - name: Upload Gatling report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gatling-report
+          path: target/gatling
